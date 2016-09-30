@@ -1,0 +1,7 @@
+<div #start (open)="mybutton.focus()" class="side-menu full-h layout-column min-w frame1">
+    Side Nav
+    <br>
+
+    <button md-raised-button color="primary" class="mrg-h2" (click)="newReservation()">new</button>
+    <button md-button #mybutton (click)="start.close()">Close</button>
+</div>

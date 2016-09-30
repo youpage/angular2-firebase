@@ -1,0 +1,34 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)" class="mg1">
+    <md-card class="align-center layout-column">
+        <md-card-title>{{!register ? 'Login Form' : 'Register Form'}}</md-card-title>
+        <md-card-content class="layout-column min-w">
+            <md-input placeholder="Email" type="email" required="required" [formControl]="loginForm.controls['email']" dividerColor="{{ !loginForm.controls['email'].valid ? 'warn' : 'primary' }}">
+                <span md-prefix>
+                        <i class="mdi mdi-email"></i>
+                        &nbsp;
+                    </span>
+                <md-hint [hidden]="loginForm.controls['email'].pristine">
+                    <span [hidden]="loginForm.controls['email'].valid"> It must be a valid email.</span>
+                </md-hint>
+            </md-input>
+            <md-input placeholder="Password" type="password" required="required" [formControl]="loginForm.controls['password']" dividerColor="{{ !loginForm.controls['password'].valid ? 'warn' : 'primary' }}">
+                <span md-prefix>
+                    <i class="mdi mdi-lock"></i>
+                    &nbsp;
+                </span>
+                <md-hint [hidden]="loginForm.controls['password'].pristine || loginForm.controls['password'].valid">
+                    <span [hidden]="!loginForm.controls['password'].hasError('required')">You must add a password.</span>
+                </md-hint>
+            </md-input>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">{{register ? 'Register Now' : 'Sign In'}}</button>
+        </md-card-actions>
+    </md-card>
+</form>
+
+<div class="align-center layout-column register-user mg1">
+    <label [hidden]="register" for="New User">New User?</label>
+    <button md-button (click)="regUser()">{{!register ? 'Register Now' : 'Sign In'}}</button>
+</div>

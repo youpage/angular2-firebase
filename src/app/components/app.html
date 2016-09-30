@@ -1,0 +1,12 @@
+<div id="main-container" class="main-container layout-row full-h">
+
+  <div id="content-container" class="page-layout layout-column flex">
+    <router-outlet name="toolbar"></router-outlet>
+    <div  class="layout-row full-h">
+      <router-outlet name="sidenav"></router-outlet>
+      <div id="dynamic-content" class="full-w">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<md-toolbar id="content-container-header" class="shadow-glow-z1 sidebar">
+    <div class="flex-noshrink">
+        Logo
+    </div>
+    <div class="flex-noshrink">
+        <span>{{title}}</span>
+        <input type="" name="search" value="">
+    </div>
+    <div class="flex-noshrink">
+        <div class="align-center layout-row">
+            <div class="txt-right notifications">                
+                <button *ngIf="user.notifications > 0" md-mini-fab class="number" color="md-accent" [class.md-warn]="user.notifications >= 99">
+                    {{user.notifications | truncate:[2,'+']}}
+                </button>
+                <md-icon fontSet="mdi" fontIcon="mdi-bell"></md-icon>
+            </div>            
+            <button md-button [md-menu-trigger-for]="menu">
+                <span>{{user.name}}</span>
+                <md-icon fontSet="mdi" fontIcon="mdi-chevron-down"></md-icon>
+            </button>
+            <div class=" profile flex-noshrink">
+                <img [src]="user.photo" alt="profile photo" title="{{user.name}}">    
+            </div>            
+        </div>
+
+    </div>
+</md-toolbar>
+<md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item (click)="profile()">Profile</button>
+    <button md-menu-item (click)="signOut()">Sign Out</button>
+    <button md-menu-item>Help</button>
+</md-menu>
